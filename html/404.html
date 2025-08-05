@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 - Осторожно, мошенники!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+  body, html {
+    margin: 0; padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background: #5a3e99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #f0eaff;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 400px;
+    padding: 30px;
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .error-code {
+    font-size: 10vw;
+    font-weight: 900;
+    color: #b79cff;
+    animation: pulse 2s infinite;
+    user-select: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  .emoji {
+    font-size: 5rem;
+    margin: 20px 0;
+    animation: float 3s ease-in-out infinite;
+    user-select: none;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  p {
+    font-size: 1.3rem;
+    margin: 20px 0 30px;
+    font-weight: 600;
+    color: #d6c9ff;
+  }
+
+  button {
+    background: linear-gradient(135deg, #8e73ff, #a493ff);
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(142, 115, 255, 0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(142, 115, 255, 0.7);
+    animation: buzz 0.15s linear infinite;
+  }
+
+  @keyframes buzz {
+    0%, 100% { transform: translateY(-5px) translateX(0) scale(1.05); }
+    25% { transform: translateY(-5px) translateX(2px) scale(1.05); }
+    50% { transform: translateY(-5px) translateX(-2px) scale(1.05); }
+    75% { transform: translateY(-5px) translateX(2px) scale(1.05); }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      max-width: 90vw;
+      padding: 20px;
+    }
+
+    .error-code {
+      font-size: 20vw;
+    }
+
+    .emoji {
+      font-size: 3.5rem;
+      margin: 15px 0;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 15px 0 25px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      border-radius: 40px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-labelledby="title" aria-describedby="desc">
+    <h1 id="title" class="error-code">404</h1>
+    <div class="emoji" aria-hidden="true">🕵️‍♂️💀</div>
+    <p id="desc">Не ведитесь на уловки мошенников! Осторожно с подозрительными ссылками.</p>
+    <button id="backBtn" aria-label="Вернуться на главную страницу">Вернуться на главную</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('backBtn');
+    btn.addEventListener('click', () => {
+      btn.disabled = true;
+      btn.textContent = 'Загружаем...';
+      setTimeout(() => {
+        window.location.href = 'osnova.html';
+      }, 600);
+    });
+  </script>
+</body>
+</html>

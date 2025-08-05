@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Подтверждение возраста 18+</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+  body, html {
+    margin: 0; padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: #121212;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .wrapper {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border-radius: 25px;
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 90vw;
+    box-shadow: 0 8px 30px rgba(255,75,43,0.6);
+    position: relative;
+  }
+
+  .wrapper::before {
+    content: '🔞';
+    font-size: 6rem;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0 5px #ff4b2b);
+    user-select: none;
+  }
+
+  h2 {
+    margin-top: 0;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px #fff3f0;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #ffe6e1;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  button {
+    flex: 1 1 120px;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 75, 43, 0.6);
+    color: white;
+    user-select: none;
+  }
+
+  button.yes {
+    background: #28a745;
+    box-shadow: 0 5px 20px #28a745cc;
+  }
+
+  button.yes:hover {
+    background: #1e7e34;
+    box-shadow: 0 8px 25px #1e7e34dd;
+    transform: scale(1.1);
+  }
+
+  button.no {
+    background: #dc3545;
+    box-shadow: 0 5px 20px #dc3545cc;
+  }
+
+  button.no:hover {
+    background: #a71d2a;
+    box-shadow: 0 8px 25px #a71d2add;
+    transform: scale(1.1);
+  }
+
+  button:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  }
+
+  .deny-message {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #ffb3b3;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .deny-message.visible {
+    opacity: 1;
+  }
+
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 2rem;
+    }
+
+    .buttons {
+      gap: 15px;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 12px 0;
+      flex-basis: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrapper" role="main" aria-labelledby="header" aria-describedby="desc">
+    <h2 id="header">Подтвердите ваш возраст</h2>
+    <p id="desc">Этот сайт содержит материалы, предназначенные для лиц старше 18 лет.</p>
+
+    <div class="buttons">
+      <button class="yes" aria-label="Мне есть 18 лет, войти на сайт">Да, мне есть 18+</button>
+      <button class="no" aria-label="Мне нет 18 лет, покинуть сайт">Нет, я младше 18</button>
+    </div>
+
+    <p class="deny-message" role="alert" aria-live="polite">Извините, доступ запрещён. Вы будете перенаправлены...</p>
+  </div>
+
+  <script>
+    const yesBtn = document.querySelector('button.yes');
+    const noBtn = document.querySelector('button.no');
+    const denyMsg = document.querySelector('.deny-message');
+
+    yesBtn.addEventListener('click', () => {
+      yesBtn.disabled = true;
+      noBtn.disabled = true;
+      yesBtn.textContent = 'Добро пожаловать!';
+      setTimeout(() => {
+        window.location.href = './html/osnova.html';
+      }, 800);
+    });
+
+    noBtn.addEventListener('click', () => {
+      denyMsg.classList.add('visible');
+      yesBtn.disabled = true;
+      noBtn.disabled = true;
+      setTimeout(() => {
+        alert('Доступ разрешён только для пользователей 18+');
+        window.location.href = 'https://www.google.com';
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
